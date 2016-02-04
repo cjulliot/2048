@@ -38,12 +38,12 @@ bool Grid::is_over() const{
          if (grid[x][y] == 0){
             res = false;
             break;
-         } else if (x < x_size() - 2){ // not a border cell
+         } else if (x < x_size() - 1){ // not a border cell
             if (grid[x][y] == grid[x+1][y]){
                res = false;
                break;
             }
-         } else if (y < y_size() - 2){ // not a border cell
+         } else if (y < y_size() - 1){ // not a border cell
             if (grid[x][y] == grid[x][y+1]){
                res = false;
                break;
