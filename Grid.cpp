@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <time.h>
 
-Grid::Grid (int x, int y): grid(x, vector<int>(y)){
+Grid::Grid (int x, int y): grid(x, vector<int>(y)), _is_won(false){
    srand(time(NULL));
    spawn_new_number();
 }
@@ -185,5 +185,7 @@ void Grid::move_cell(const int x_start, const int y_start, \
    } else { // cell "fusion"
       grid[x_stop][y_stop] *= 2;
       grid[x_start][y_start] = 0;
+      if(grid[x_stop][y_stop] == 2048)
+         _is_won = true;
    }
 }

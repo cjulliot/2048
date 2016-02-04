@@ -38,7 +38,14 @@ int main(int argc, char* argv[]) {
       my_grid.spawn_new_number();
       clear();
       my_grid.print();
-   } while(!my_grid.is_over());
+   } while(!(my_grid.is_over() || my_grid.is_won()));
+
+   if(my_grid.is_won())
+      printw("\n\nYOU WIN!\n");
+   else
+      printw("\n\nGame Over :(\n");
+
+   getch();
 
    endwin();
    return 0;

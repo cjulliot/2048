@@ -10,10 +10,12 @@ class Grid {
    
 private:
    vector< vector<int> > grid;
+   bool _is_won;
 
 public:
    Grid(int x, int y); // Default constructor
 
+   bool is_won() const;
    int x_size() const;
    int y_size() const;
 
@@ -28,6 +30,9 @@ public:
 
 };
 
+inline bool Grid::is_won() const{
+   return _is_won;
+}
 
 inline int Grid::x_size() const{
    return grid.size();
@@ -36,6 +41,5 @@ inline int Grid::x_size() const{
 inline int Grid::y_size() const{
    return grid[0].size();
 }
-
 
 #endif //GRID_H
