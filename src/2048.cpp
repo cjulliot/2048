@@ -1,4 +1,4 @@
-#include "Grid.h"
+#include "Game.h"
 #include <curses.h>
 #include <cstdlib>
 
@@ -30,17 +30,17 @@ int main(int argc, char* argv[]) {
          size_y = MAX_Y_SIZE;
    }
 
-   Grid my_grid(size_x, size_y);
-   my_grid.print();
+   Game my_game(size_x, size_y);
+   my_game.print();
 
    do{
-      my_grid.move(my_grid.get_arrow_input());
-      my_grid.spawn_new_number();
+      my_game.move(my_game.get_arrow_input());
+      my_game.spawn_new_number();
       clear();
-      my_grid.print();
-   } while(!(my_grid.is_over() || my_grid.is_won()));
+      my_game.print();
+   } while(!(my_game.is_over() || my_game.is_won()));
 
-   if(my_grid.is_won())
+   if(my_game.is_won())
       printw("\n\nYOU WIN!\n");
    else
       printw("\n\nGame Over :(\n");
