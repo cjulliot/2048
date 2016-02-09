@@ -66,18 +66,13 @@ int Game::get_arrow_input() const{
    while (!input){
       switch(input = getch()) {
          case KEY_UP:
-            printw("Up\n");
-            break;
          case KEY_DOWN:
-            printw("Down\n");
-            break;
          case KEY_LEFT:
-            printw("Left\n");
-            break;
          case KEY_RIGHT:
-            printw("Right\n");
             break;
          default:
+            clear();
+            print();
             printw("Not an arrow\n");
             input = 0;
             break;
