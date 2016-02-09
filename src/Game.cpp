@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <time.h>
 
-Game::Game (int x, int y): grid(x, vector<int>(y)), _is_won(false){
+Game::Game (int x, int y): grid(x, vector<int>(y)), _is_won(false), _score(0){
    srand(time(NULL));
    spawn_new_number();
 }
@@ -27,6 +27,7 @@ void Game::print() const{
       }
       printw("\n");
    }
+   printw("\nScore: %d\n", _score);
 }
 
 
@@ -183,6 +184,7 @@ void Game::move_cell(const int x_start, const int y_start, \
       grid[x_stop][y_stop] = grid[x_start][y_start];
       grid[x_start][y_start] = 0;
    } else { // cell "fusion"
+      _score += grid[x_stop][y_stop];
       grid[x_stop][y_stop] *= 2;
       grid[x_start][y_start] = 0;
       if(grid[x_stop][y_stop] == 2048)

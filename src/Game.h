@@ -11,6 +11,7 @@ class Game {
 private:
    vector< vector<int> > grid;
    bool _is_won;
+   unsigned int _score;
 
 public:
    Game(int x, int y); // Default constructor
