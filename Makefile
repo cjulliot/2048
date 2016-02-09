@@ -7,7 +7,7 @@ C_FILES = src/2048.cpp src/Game.cpp
 all: 2048
 
 2048: $(C_FILES)
-	@mkdir bin
+	@mkdir -p bin
 	$(CC) $(CFLAGS) $(LIBS) $^ -o bin/$@
 
 clean:
