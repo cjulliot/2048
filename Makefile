@@ -8,7 +8,7 @@ all: 2048
 
 2048: $(C_FILES)
 	@mkdir -p bin
-	$(CC) $(CFLAGS) $(LIBS) $^ -o bin/$@
+	$(CC) $(CFLAGS) $^ -o bin/$@ $(LIBS)
 
 clean:
 	@$(RM) -r bin/
