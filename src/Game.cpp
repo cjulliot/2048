@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <time.h>
 
-Game::Game (int x, int y): grid(x, std::vector<int>(y)), _is_won(false), _score(0){
+Game::Game (int x, int y): _grid(x, std::vector<int>(y)), _is_won(false), _score(0){
    srand(time(NULL));
    spawn_new_number();
 }
@@ -14,16 +14,16 @@ void Game::spawn_new_number() {
    do {
       x = rand() % x_size();
       y = rand() % y_size();
-   } while (grid[x][y] != 0);
+   } while (_grid[x][y] != 0);
 
-   grid[x][y] = 2;
+   _grid[x][y] = 2;
 }
 
 
 void Game::print() const{
    for (int y = 0; y < y_size(); y++){
       for (int x = 0; x < x_size(); x++){
-         printw("%d ", grid[x][y]);
+         printw("%d ", _grid[x][y]);
       }
       printw("\n");
    }
@@ -36,16 +36,16 @@ bool Game::is_over() const{
 
    for (int x = 0; x < x_size(); x++){
       for (int y = 0; y < y_size(); y++){
-         if (grid[x][y] == 0){
+         if (_grid[x][y] == 0){
             res = false;
             break;
          } else if (x < x_size() - 1){ // not a border cell
-            if (grid[x][y] == grid[x+1][y]){
+            if (_grid[x][y] == _grid[x+1][y]){
                res = false;
                break;
             }
          } else if (y < y_size() - 1){ // not a border cell
-            if (grid[x][y] == grid[x][y+1]){
+            if (_grid[x][y] == _grid[x][y+1]){
                res = false;
                break;
             }
@@ -90,13 +90,13 @@ void Game::move(const int direction){
       for(int y = 0; y < y_size(); y++){
          for(int x = 1; x < x_size(); x++){
             /* If cell value is 0 then do nothing */
-            if(grid[x][y]){
+            if(_grid[x][y]){
                int x_stop;
 
                for(x_stop = x; x_stop >= 0; x_stop--){
                   if(x_stop == 0)
                      break;
-                  if((grid[x][y] != grid[x_stop-1][y]) && (grid[x_stop-1][y] != 0))
+                  if((_grid[x][y] != _grid[x_stop-1][y]) && (_grid[x_stop-1][y] != 0))
                      break;
                }
 
@@ -111,13 +111,13 @@ void Game::move(const int direction){
    if(direction == KEY_RIGHT){
       for(int y = 0; y < y_size(); y++){
          for(int x = x_size()-2; x >= 0; x--){
-            if(grid[x][y]){
+            if(_grid[x][y]){
                int x_stop;
 
                for(x_stop = x; x_stop < x_size(); x_stop++){
                   if(x_stop == x_size()-1)
                      break;
-                  if((grid[x][y] != grid[x_stop+1][y]) && (grid[x_stop+1][y] != 0))
+                  if((_grid[x][y] != _grid[x_stop+1][y]) && (_grid[x_stop+1][y] != 0))
                      break;
                }
 
@@ -132,13 +132,13 @@ void Game::move(const int direction){
    if(direction == KEY_UP){
       for(int x = 0; x < x_size(); x++){
          for(int y = 1; y < y_size(); y++){
-            if(grid[x][y]){
+            if(_grid[x][y]){
                int y_stop;
 
                for(y_stop = y; y_stop >= 0; y_stop--){
                   if(y_stop == 0)
                      break;
-                  if((grid[x][y] != grid[x][y_stop-1]) && (grid[x][y_stop-1] != 0))
+                  if((_grid[x][y] != _grid[x][y_stop-1]) && (_grid[x][y_stop-1] != 0))
                      break;
                }
 
@@ -153,13 +153,13 @@ void Game::move(const int direction){
    if(direction == KEY_DOWN){
       for(int x = 0; x < x_size(); x++){
          for(int y = y_size()-2; y >= 0; y--){
-            if(grid[x][y]){
+            if(_grid[x][y]){
                int y_stop;
 
                for(y_stop = y; y_stop < y_size(); y_stop++){
                   if(y_stop == y_size()-1)
                      break;
-                  if((grid[x][y] != grid[x][y_stop+1]) && (grid[x][y_stop+1] != 0))
+                  if((_grid[x][y] != _grid[x][y_stop+1]) && (_grid[x][y_stop+1] != 0))
                      break;
                }
 
@@ -175,14 +175,14 @@ void Game::move(const int direction){
 void Game::move_cell(const int x_start, const int y_start, \
       const int x_stop, const int y_stop){
 
-   if(grid[x_stop][y_stop] == 0){
-      grid[x_stop][y_stop] = grid[x_start][y_start];
-      grid[x_start][y_start] = 0;
+   if(_grid[x_stop][y_stop] == 0){
+      _grid[x_stop][y_stop] = _grid[x_start][y_start];
+      _grid[x_start][y_start] = 0;
    } else { // cell "fusion"
-      _score += grid[x_stop][y_stop];
-      grid[x_stop][y_stop] *= 2;
-      grid[x_start][y_start] = 0;
-      if(grid[x_stop][y_stop] == 2048)
+      _score += _grid[x_stop][y_stop];
+      _grid[x_stop][y_stop] *= 2;
+      _grid[x_start][y_start] = 0;
+      if(_grid[x_stop][y_stop] == 2048)
          _is_won = true;
    }
 }

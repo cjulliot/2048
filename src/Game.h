@@ -7,7 +7,7 @@
 class Game {
    
 private:
-   std::vector< std::vector<int> > grid;
+   std::vector< std::vector<int> > _grid;
    bool _is_won;
    unsigned int _score;
 
@@ -34,11 +34,11 @@ inline bool Game::is_won() const{
 }
 
 inline int Game::x_size() const{
-   return grid.size();
+   return _grid.size();
 }
 
 inline int Game::y_size() const{
-   return grid[0].size();
+   return _grid[0].size();
 }
 
 #endif //GAME_H
