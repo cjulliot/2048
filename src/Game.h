@@ -4,12 +4,10 @@
 #include <vector>
 
 
-using namespace std;
-
 class Game {
    
 private:
-   vector< vector<int> > grid;
+   std::vector< std::vector<int> > grid;
    bool _is_won;
    unsigned int _score;
 

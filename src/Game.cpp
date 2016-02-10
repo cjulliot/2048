@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <time.h>
 
-Game::Game (int x, int y): grid(x, vector<int>(y)), _is_won(false), _score(0){
+Game::Game (int x, int y): grid(x, std::vector<int>(y)), _is_won(false), _score(0){
    srand(time(NULL));
    spawn_new_number();
 }
