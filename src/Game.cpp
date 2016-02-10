@@ -23,9 +23,9 @@ void Game::spawn_new_number() {
 void Game::print() const{
    for (int y = 0; y < y_size(); y++){
       for (int x = 0; x < x_size(); x++){
-         printw("%d ", _grid[x][y]);
+         printw("%4d ", _grid[x][y]);
       }
-      printw("\n");
+      printw("\n\n");
    }
    printw("\nScore: %d\n", _score);
 }
