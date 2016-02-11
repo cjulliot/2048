@@ -1,19 +1,22 @@
 #include "Game.h"
 #include <curses.h>
-#include <cstdlib>
-#include <time.h>
 
 Game::Game (int x, int y): _grid(x, std::vector<int>(y)), _is_won(false), _score(0){
-   srand(time(NULL));
+   std::random_device r;
+   _rand_engine = std::default_random_engine(r());
+
    spawn_new_number();
 }
 
 
 void Game::spawn_new_number() {
    int x, y;
+   std::uniform_int_distribution<int> uniform_dist_x(0, x_size()-1);
+   std::uniform_int_distribution<int> uniform_dist_y(0, y_size()-1);
+
    do {
-      x = rand() % x_size();
-      y = rand() % y_size();
+      x = uniform_dist_x(_rand_engine);
+      y = uniform_dist_y(_rand_engine);
    } while (_grid[x][y] != 0);
 
    _grid[x][y] = ((rand() % 2)+1)*2;

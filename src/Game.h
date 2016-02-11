@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <vector>
+#include <random>
 
 
 class Game {
@@ -10,6 +11,7 @@ private:
    std::vector< std::vector<int> > _grid;
    bool _is_won;
    unsigned int _score;
+   std::default_random_engine _rand_engine;
 
 public:
    Game(int x, int y); // Default constructor
