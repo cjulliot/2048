@@ -21,7 +21,7 @@ public:
    bool is_over() const; 
    int get_arrow_input() const;
    void move(const int direction);
-   void move_cell(const int x_start, const int y_start, \
+   void move_cell(const int x_start, const int y_start,
                      const int x_stop, const int y_stop);
  
    void spawn_new_number();
