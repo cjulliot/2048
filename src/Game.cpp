@@ -32,30 +32,23 @@ void Game::print() const{
 
 
 bool Game::is_over() const{
-   bool res = true;
-
    for (int x = 0; x < x_size(); x++){
       for (int y = 0; y < y_size(); y++){
          if (_grid[x][y] == 0){
-            res = false;
-            break;
+            return false;
          } else if (x < x_size() - 1){ // not a border cell
             if (_grid[x][y] == _grid[x+1][y]){
-               res = false;
-               break;
+            return false;
             }
          } else if (y < y_size() - 1){ // not a border cell
             if (_grid[x][y] == _grid[x][y+1]){
-               res = false;
-               break;
+            return false;
             }
          }
       }
-      if (res == false)
-         break;
    }
 
-   return res;
+   return true;
 }
 
 
