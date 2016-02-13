@@ -8,8 +8,6 @@ void input_size_x_y(int& size_x, int& size_y);
 
 int main(int argc, char* argv[]) {
    initscr();
-   cbreak();
-   echo();
    keypad(stdscr, TRUE);
    timeout(-1);
 
