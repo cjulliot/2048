@@ -21,13 +21,21 @@ void Game::spawn_new_number() {
 
 
 void Game::print() const{
+   int nb_row, nb_col;
+   /* Get window's size */
+   getmaxyx(stdscr, nb_row, nb_col);
+
    for (int y = 0; y < y_size(); y++){
+      /* Reset printw cursor to top left corner, then move to center of screen */
+      mvprintw(0, 0, "");
+      mvprintw(nb_row/2-y_size()+2*y, nb_col/2-x_size()*2, "");
       for (int x = 0; x < x_size(); x++){
          printw("%4d ", _grid[x][y]);
       }
-      printw("\n\n");
    }
-   printw("\nScore: %d\n", _score);
+   mvprintw(0, 0, "");
+   mvprintw(nb_row/2+y_size()+3, 3*nb_col/5, "");
+   printw("Score: %d\n", _score);
 }
 
 
@@ -38,11 +46,11 @@ bool Game::is_over() const{
             return false;
          } else if (x < x_size() - 1){ // not a border cell
             if (_grid[x][y] == _grid[x+1][y]){
-            return false;
+               return false;
             }
          } else if (y < y_size() - 1){ // not a border cell
             if (_grid[x][y] == _grid[x][y+1]){
-            return false;
+               return false;
             }
          }
       }
