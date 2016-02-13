@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <curses.h>
+#include <string>
 #include <cstdlib>
 
 
@@ -44,16 +45,24 @@ int main(int argc, char* argv[]) {
 
 
 void input_size_x_y(int& size_x, int& size_y){
-   printw("Welcome to 2048!\n\n");
-   printw("Choose number of rows (2-9, default:4): ");
+   int nb_row, nb_col;
+   std::string message;
+   getmaxyx(stdscr, nb_row, nb_col);
 
-   scanw("%d[2-9]", &size_y);
+   message = "Welcome to 2048!";
+   mvprintw(nb_row/3, nb_col/2-message.length()/2, message.c_str());
+
+   message = "Choose number of rows [2-9] (default=4): ";
+   mvprintw(nb_row/3+2, nb_col/2-message.length()/2, message.c_str());
+
+   scanw("%d", &size_y);
 
    if(size_y < 2 || size_y > 9)
       size_y = 4;
 
-   printw("\nChoose number of columns (2-9, default:4): ");
-   scanw("%d[2-9]", &size_x);
+   message = "Choose number of columns [2-9] (default=4): ";
+   mvprintw(nb_row/3+4, nb_col/2-message.length()/2, message.c_str());
+   scanw("%d", &size_x);
 
    if(size_x < 2 || size_x > 9)
       size_x = 4;
