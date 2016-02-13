@@ -9,7 +9,6 @@ void input_size_x_y(int& size_x, int& size_y);
 int main(int argc, char* argv[]) {
    initscr();
    cbreak();
-   clear();
    echo();
    keypad(stdscr, TRUE);
    timeout(-1);
@@ -17,7 +16,6 @@ int main(int argc, char* argv[]) {
    int size_x, size_y;
 
    input_size_x_y(size_x, size_y);
-   clear();
 
    /* Disable echo so key inputs are not shown during the game */
    noecho();
@@ -28,7 +26,6 @@ int main(int argc, char* argv[]) {
    do{
       my_game.move(my_game.get_arrow_input());
       my_game.spawn_new_number();
-      clear();
       my_game.print();
    } while(!(my_game.is_over() || my_game.is_won()));
 

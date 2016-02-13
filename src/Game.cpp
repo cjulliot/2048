@@ -25,6 +25,9 @@ void Game::print() const{
    /* Get window's size */
    getmaxyx(stdscr, nb_row, nb_col);
 
+   /* Clear screen before re-drawing */
+   clear();
+
    for (int y = 0; y < y_size(); y++){
       /* Reset printw cursor to top left corner, then move to center of screen */
       mvprintw(0, 0, "");
