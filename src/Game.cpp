@@ -38,7 +38,10 @@ void Game::print() const{
    }
    mvprintw(0, 0, "");
    mvprintw(nb_row/2+y_size()+3, 3*nb_col/5, "");
-   printw("Score: %d\n", _score);
+   printw("Score: %d", _score);
+   
+   mvprintw(0, 0, "");
+   mvprintw(nb_row-1, 2, "(Press q to quit)");
 }
 
 
@@ -73,6 +76,7 @@ int Game::get_arrow_input() const{
          case KEY_DOWN:
          case KEY_LEFT:
          case KEY_RIGHT:
+         case 'q':
             break;
          default:
             input = 0;
