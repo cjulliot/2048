@@ -64,9 +64,6 @@ int Game::get_arrow_input() const{
          case KEY_RIGHT:
             break;
          default:
-            clear();
-            print();
-            printw("Not an arrow\n");
             input = 0;
             break;
       }
