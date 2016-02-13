@@ -17,6 +17,7 @@ int main(int argc, char* argv[]) {
 
    /* Disable echo so key inputs are not shown during the game */
    noecho();
+   curs_set(0);
 
    Game my_game(size_x, size_y);
    my_game.print();
