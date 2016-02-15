@@ -13,6 +13,9 @@ int main(int argc, char* argv[]) {
 
    int size_x, size_y;
 
+   int nb_row, nb_col;
+   std::string message;
+
    input_size_x_y(size_x, size_y);
 
    /* Disable echo so key inputs are not shown during the game */
@@ -32,11 +35,16 @@ int main(int argc, char* argv[]) {
       my_game.print();
    } while(!(my_game.is_over() || my_game.is_won()));
 
-   if(my_game.is_won())
-      printw("\n\nYOU WIN!\n");
-   else
-      printw("\n\nGame Over :(\n");
+   getmaxyx(stdscr, nb_row, nb_col);
+   //mvprintw(0, 0, "");
 
+   if(my_game.is_won())
+      message = "YOU WIN!!";
+   else
+      message = "Game Over :(";
+
+   mvprintw(nb_row/10, nb_col/2-message.length()/2, message.c_str());
+   refresh();
    getch();
 
 end:
@@ -69,4 +77,3 @@ void input_size_x_y(int& size_x, int& size_y){
       size_x = 4;
 
 }
-
