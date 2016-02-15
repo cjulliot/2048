@@ -29,18 +29,14 @@ void Game::print() const{
    clear();
 
    for (int y = 0; y < y_size(); y++){
-      /* Reset printw cursor to top left corner, then move to center of screen */
-      mvprintw(0, 0, "");
       mvprintw(nb_row/2-y_size()+2*y, nb_col/2-x_size()*2, "");
       for (int x = 0; x < x_size(); x++){
          printw("%4d ", _grid[x][y]);
       }
    }
-   mvprintw(0, 0, "");
    mvprintw(nb_row/2+y_size()+3, 3*nb_col/5, "");
    printw("Score: %d", _score);
    
-   mvprintw(0, 0, "");
    mvprintw(nb_row-1, 2, "(Press q to quit)");
 }
 

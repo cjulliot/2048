@@ -36,7 +36,6 @@ int main(int argc, char* argv[]) {
    } while(!(my_game.is_over() || my_game.is_won()));
 
    getmaxyx(stdscr, nb_row, nb_col);
-   //mvprintw(0, 0, "");
 
    if(my_game.is_won())
       message = "YOU WIN!!";
