@@ -12,6 +12,7 @@ int main(int argc, char* argv[]) {
 
    int size_x, size_y;
 
+   /* Variables used to store screen dimensions later on */
    int nb_row, nb_col;
    std::string message;
 
@@ -19,6 +20,8 @@ int main(int argc, char* argv[]) {
 
    /* Disable echo so key inputs are not shown during the game */
    noecho();
+
+   /* Disable blinking cursor */
    curs_set(0);
 
    Game my_game(size_x, size_y);
@@ -39,6 +42,7 @@ int main(int argc, char* argv[]) {
       }
    } while(!(my_game.is_over() || my_game.is_won()));
 
+   /* End of game */
    getmaxyx(stdscr, nb_row, nb_col);
 
    if(my_game.is_won())

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <curses.h>
 
+
 Game::Game (int x, int y): _grid(x, std::vector<int>(y)), _is_won(false), _score(0){
    std::random_device r;
    _rand_engine = std::default_random_engine(r());
@@ -26,6 +27,7 @@ void Game::spawn_new_number() {
 
 void Game::print() const{
    int nb_row, nb_col;
+
    /* Get window's size */
    getmaxyx(stdscr, nb_row, nb_col);
 
@@ -38,8 +40,8 @@ void Game::print() const{
          printw("%4d ", _grid[x][y]);
       }
    }
-   mvprintw(nb_row/2+y_size()+3, 3*nb_col/5, "");
-   printw("Score: %d", _score);
+
+   mvprintw(nb_row/2+y_size()+3, 3*nb_col/5, "Score: %d", _score);
    
    mvprintw(nb_row-1, 2, "(Press q to quit)");
 }
@@ -184,6 +186,7 @@ int Game::move(const int direction){
          }
       }
    }
+
    return has_moved;
 }
 

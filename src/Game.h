@@ -22,6 +22,7 @@ public:
 
    bool is_over() const; 
    int get_arrow_input() const;
+
    /* Game::move returns 1 if at least one cell has moved, 0 otherwise */
    int move(const int direction);
    void move_cell(const int x_start, const int y_start,
@@ -29,7 +30,6 @@ public:
  
    void spawn_new_number();
    void print() const;
-
 };
 
 inline bool Game::is_won() const{
