@@ -65,19 +65,19 @@ void input_size_x_y(int& size_x, int& size_y){
    message = "Welcome to 2048!";
    mvprintw(nb_row/3, nb_col/2-message.length()/2, message.c_str());
 
-   message = "Choose number of rows [2-9] (default=4): ";
+   message = "Choose number of rows [3-9] (default=4): ";
    mvprintw(nb_row/3+2, nb_col/2-message.length()/2, message.c_str());
 
    scanw("%d", &size_y);
 
-   if(size_y < 2 || size_y > 9)
+   if(size_y < 3 || size_y > 9)
       size_y = 4;
 
-   message = "Choose number of columns [2-9] (default=4): ";
+   message = "Choose number of columns [3-9] (default=4): ";
    mvprintw(nb_row/3+4, nb_col/2-message.length()/2, message.c_str());
    scanw("%d", &size_x);
 
-   if(size_x < 2 || size_x > 9)
+   if(size_x < 3 || size_x > 9)
       size_x = 4;
 
 }
