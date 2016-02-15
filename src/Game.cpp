@@ -16,7 +16,7 @@ void Game::spawn_new_number() {
       y = rand() % y_size();
    } while (_grid[x][y] != 0);
 
-   _grid[x][y] = 2;
+   _grid[x][y] = (rand() % 3)*2;
 }
 
 
