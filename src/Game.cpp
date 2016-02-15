@@ -85,7 +85,8 @@ int Game::get_arrow_input() const{
 
 
 
-void Game::move(const int direction){
+int Game::move(const int direction){
+   int has_moved = 0;
 
    if(direction == KEY_LEFT){
       for(int y = 0; y < y_size(); y++){
@@ -102,8 +103,10 @@ void Game::move(const int direction){
                }
 
                /* Test if we need to move */
-               if(x != x_stop)
+               if(x != x_stop){
                   move_cell(x, y, x_stop, y);
+                  has_moved = 1;
+               }
             }
          }
       }
@@ -123,8 +126,10 @@ void Game::move(const int direction){
                }
 
                /* Test if we need to move */
-               if(x != x_stop)
+               if(x != x_stop){
                   move_cell(x, y, x_stop, y);
+                  has_moved = 1;
+               }
             }
          }
       }
@@ -144,8 +149,10 @@ void Game::move(const int direction){
                }
 
                /* Test if we need to move */
-               if(y != y_stop)
+               if(y != y_stop){
                   move_cell(x, y, x, y_stop);
+                  has_moved = 1;
+               }
             }
          }
       }
@@ -165,12 +172,15 @@ void Game::move(const int direction){
                }
 
                /* Test if we need to move */
-               if(y != y_stop)
+               if(y != y_stop){
                   move_cell(x, y, x, y_stop);
+                  has_moved = 1;
+               }
             }
          }
       }
    }
+   return has_moved;
 }
 
 void Game::move_cell(const int x_start, const int y_start, \

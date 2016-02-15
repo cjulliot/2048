@@ -26,13 +26,18 @@ int main(int argc, char* argv[]) {
    my_game.print();
 
    do{
+      int has_moved;
       int key_pressed = my_game.get_arrow_input();
+
       if(key_pressed == 'q')
          goto end;
       else
-         my_game.move(key_pressed);
-      my_game.spawn_new_number();
-      my_game.print();
+         has_moved = my_game.move(key_pressed);
+
+      if(has_moved){
+         my_game.spawn_new_number();
+         my_game.print();
+      }
    } while(!(my_game.is_over() || my_game.is_won()));
 
    getmaxyx(stdscr, nb_row, nb_col);

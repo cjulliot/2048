@@ -20,7 +20,8 @@ public:
 
    bool is_over() const; 
    int get_arrow_input() const;
-   void move(const int direction);
+   /* Game::move returns 1 if at least one cell has moved, 0 otherwise */
+   int move(const int direction);
    void move_cell(const int x_start, const int y_start,
                      const int x_stop, const int y_stop);
  
