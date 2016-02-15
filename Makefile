@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -g -std=c++11
+CFLAGS = -Wall -std=c++11
 LIBS = -lncurses
 
 C_FILES = src/2048.cpp src/Game.cpp

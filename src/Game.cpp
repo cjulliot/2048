@@ -13,13 +13,14 @@ void Game::spawn_new_number() {
    int x, y;
    std::uniform_int_distribution<int> uniform_dist_x(0, x_size()-1);
    std::uniform_int_distribution<int> uniform_dist_y(0, y_size()-1);
+   std::uniform_int_distribution<int> uniform_dist_number(1, 2);
 
    do {
       x = uniform_dist_x(_rand_engine);
       y = uniform_dist_y(_rand_engine);
    } while (_grid[x][y] != 0);
 
-   _grid[x][y] = ((rand() % 2)+1)*2;
+   _grid[x][y] = uniform_dist_number(_rand_engine)*2;
 }
 
 
